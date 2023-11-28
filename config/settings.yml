@@ -1,0 +1,3 @@
+deprecation_collector:
+  deprecation_collector_enabled:
+    default: false
