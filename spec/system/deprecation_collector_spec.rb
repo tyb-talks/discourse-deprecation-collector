@@ -12,8 +12,7 @@ describe "Deprecation collector", type: :system do
     test_deprecation_id = DeprecationCollector::List.first
 
     stub =
-      DeprecationCollector::CollectorController
-        .any_instance
+      DeprecationCollector
         .stubs(:add_to_counter)
         .with do |value|
           logged_deprecations << value
@@ -30,6 +29,8 @@ describe "Deprecation collector", type: :system do
     # Refresh the page to trigger the collector
     page.refresh
 
-    try_until_success { expect(logged_deprecations).to include(test_deprecation_id, "_other") }
+    try_until_success do
+      expect(logged_deprecations).to include(test_deprecation_id, "_other_discourse")
+    end
   end
 end

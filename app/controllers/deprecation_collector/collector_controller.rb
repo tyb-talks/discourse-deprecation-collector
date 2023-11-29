@@ -31,25 +31,13 @@ module ::DeprecationCollector
         if !DeprecationCollector::List.include?(key)
           # We only collect data for a bound set of deprecation-ids so that clients
           # can't inflate our prometheus metrics by sending bogus data.
-          key = "_other"
+          key = key.start_with?("discourse") ? "_other_discourse" : "_other_ember"
         end
 
-        add_to_counter(key, 1)
+        DeprecationCollector.add_to_counter(key, 1)
       end
 
       render json: success_json
-    end
-
-    private
-
-    def add_to_counter(name, value)
-      metric = DiscoursePrometheus::InternalMetric::Custom.new
-      metric.type = "Counter"
-      metric.labels = { db: RailsMultisite::ConnectionManagement.current_db, deprecation_id: name }
-      metric.name = "js_deprecation_count"
-      metric.description = "js deprecations reported by clients"
-      metric.value = value
-      $prometheus_client.send_json(metric.to_h)
     end
   end
 end
