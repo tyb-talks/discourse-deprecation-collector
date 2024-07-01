@@ -32,3 +32,4 @@ jobs:
           branch: update-ember-deprecations
           delete-branch: true
           add-paths: ./lib/deprecation_collector/deprecation-ids.yaml
+          branch-suffix: timestamp
