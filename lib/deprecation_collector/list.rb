@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'yaml'
 module DeprecationCollector
   DEPRECATION_IDS_FILE = "lib/deprecation_collector/deprecation-ids.yaml"
 
