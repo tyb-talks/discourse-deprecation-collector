@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../lib/deprecation_collector/list'
 require "yaml"
 require "open-uri"
 
