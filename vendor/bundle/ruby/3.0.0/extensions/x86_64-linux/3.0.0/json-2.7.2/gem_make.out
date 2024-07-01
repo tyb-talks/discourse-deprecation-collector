@@ -1,0 +1,13 @@
+current directory: /home/runner/work/discourse-deprecation-collector/discourse-deprecation-collector/vendor/bundle/ruby/3.0.0/gems/json-2.7.2/ext/json
+/opt/hostedtoolcache/Ruby/3.0.7/x64/bin/ruby -I /opt/hostedtoolcache/Ruby/3.0.7/x64/lib/ruby/3.0.0 -r ./siteconf20240701-1823-imbiy5.rb extconf.rb
+creating Makefile
+
+current directory: /home/runner/work/discourse-deprecation-collector/discourse-deprecation-collector/vendor/bundle/ruby/3.0.0/gems/json-2.7.2/ext/json
+make DESTDIR\= clean
+
+current directory: /home/runner/work/discourse-deprecation-collector/discourse-deprecation-collector/vendor/bundle/ruby/3.0.0/gems/json-2.7.2/ext/json
+make DESTDIR\=
+make: Nothing to be done for 'all'.
+
+current directory: /home/runner/work/discourse-deprecation-collector/discourse-deprecation-collector/vendor/bundle/ruby/3.0.0/gems/json-2.7.2/ext/json
+make DESTDIR\= install
