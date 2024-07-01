@@ -19,7 +19,7 @@ jobs:
         run: chmod +x ./scripts/update_ember_deprecations.rb
 
       - name: Run deprecation script
-        run: ./scripts/update_ember_deprecations.rb
+        run: ruby ./scripts/update_ember_deprecations.rb
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
