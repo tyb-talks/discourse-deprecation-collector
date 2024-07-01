@@ -12,11 +12,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: '3.2'
           bundler-cache: true
 
       - name: Run deprecation script
-        run: ./scripts/update_ember_deprecations.rb
+        run: ruby ./scripts/update_ember_deprecations.rb
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
@@ -25,7 +25,6 @@ jobs:
           title: Update Ember Deprecations
           body: |
             This PR updates the list of Ember deprecations in the `deprecation-ids.yaml` file.
-            Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request).
           branch: update-ember-deprecations
-          branch-suffix: timestamp
           delete-branch: true
+          add-paths: ./lib/deprecation_collector/deprecation-ids.yml
