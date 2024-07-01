@@ -21,7 +21,7 @@ begin
   return if ember_deprecations.sort == deprecation_ids.sort
 
   deprecations["ember_deprecation_ids"] = deprecation_ids
-  File.write(DeprecationCollector::DEPRECATION_IDS_FILE, deprecations.to_yaml(indentation: 2))
+  File.write(DeprecationCollector::DEPRECATION_IDS_FILE, deprecations.to_yaml(indentation: 4))
   puts "Updated ember deprecations"
 ensure
   system("rm", "-rf", "deprecation-app")
