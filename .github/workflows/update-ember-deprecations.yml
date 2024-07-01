@@ -31,4 +31,4 @@ jobs:
             Automated changes by [create-pull-request](https://github.com/peter-evans/create-pull-request).
           branch: update-ember-deprecations
           delete-branch: true
-          path: ./lib/deprecation_collector/deprecation-ids.yaml
+          add-paths: ./lib/deprecation_collector/deprecation-ids.yaml
