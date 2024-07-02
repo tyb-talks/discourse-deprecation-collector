@@ -2,7 +2,7 @@
 
 require 'yaml'
 module DeprecationCollector
-  DEPRECATION_IDS_FILE = "lib/deprecation_collector/deprecation-ids.yaml"
+  DEPRECATION_IDS_FILE = "lib/deprecation_collector/deprecation-ids.yml"
 
   deprecations = YAML.load_file(DEPRECATION_IDS_FILE)
   List =
