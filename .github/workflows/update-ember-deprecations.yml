@@ -15,9 +15,6 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Make script executable
-        run: chmod +x ./scripts/update_ember_deprecations.rb
-
       - name: Run deprecation script
         run: ruby ./scripts/update_ember_deprecations.rb
 
