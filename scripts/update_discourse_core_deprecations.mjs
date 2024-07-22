@@ -221,10 +221,7 @@ async function parseDirectory(directoryPath) {
     fs.readFileSync(deprecationIdsFilePath, "utf8")
   );
   deprecationIds["discourse_deprecation_ids"] = ids;
-  fs.writeFileSync(
-    deprecationIdsFilePath,
-    yaml.dump(deprecationIds, { "---": true, noArrayIndent: true }),
-    "utf8"
-  );
+  const contentToWrite = "---\n" + yaml.dump(deprecationIds, { noArrayIndent: true })
+  fs.writeFileSync(deprecationIdsFilePath, contentToWrite, "utf8");
   console.log(`${ids.length} Extracted IDs saved to ${deprecationIdsFilePath}`);
 })();
