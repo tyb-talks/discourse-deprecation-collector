@@ -45,7 +45,11 @@ jobs:
             
             Files to debug:
             ${{ steps.run-script.outputs.FILES_TO_DEBUG }}
+            
+            Please delete the files_to_debug.txt file if it's present before merging.
+
           branch: update-discourse-core-deprecations
           delete-branch: true
           add-paths: |
             ./lib/deprecation_collector/deprecation-ids.yml
+            ./files_to_debug.txt
