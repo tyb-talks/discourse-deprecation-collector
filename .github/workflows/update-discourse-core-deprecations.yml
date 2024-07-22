@@ -28,7 +28,12 @@ jobs:
         id: run-script
         run: |
           node ./scripts/update_discourse_core_deprecations.mjs ./discourse
-          echo "::set-output name=files-to-debug::$(cat files_to_debug.txt)"
+          if [ -f files_to_debug.txt ]; then
+            echo "FILES_TO_DEBUG=$(cat files_to_debug.txt)" >> $GITHUB_ENV
+          else
+           echo "FILES_TO_DEBUG=none" >> $GITHUB_ENV
+          fi
+        
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
@@ -37,11 +42,9 @@ jobs:
           title: Update Discourse Core Deprecations
           body: |
             This PR updates the list of Discourse deprecations in the `deprecation-ids.yml` file.
-            ${{ if steps.run-script.outputs.files-to-debug }}
             
-              Files to debug:
-              ${{ steps.run-script.outputs.files-to-debug }}
-            ${{ endif }}
+            Files to debug:
+            ${{ steps.run-script.outputs.FILES_TO_DEBUG }}
           branch: update-discourse-core-deprecations
           delete-branch: true
           add-paths: |
