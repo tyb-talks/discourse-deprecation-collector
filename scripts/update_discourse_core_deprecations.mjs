@@ -81,7 +81,7 @@ function resolveIdentifier(name, scope, ast = null) {
       }
     })?.node?.id?.name;
 
-    // return traverseForDeprecationId(ast, name, calleeFunctionName, argIndex);
+    return traverseForDeprecationId(ast, name, calleeFunctionName, argIndex);
   }
 
   return [];
@@ -228,7 +228,7 @@ async function parseDirectory(directoryPath) {
   deprecationIds["discourse_deprecation_ids"] = ids;
   fs.writeFileSync(
     deprecationIdsFilePath,
-    yaml.dump(deprecationIds, { "---": true, noArrayIndent: true }),
+    "---\n" + yaml.dump(deprecationIds, { noArrayIndent: true }),
     "utf8"
   );
   console.log(`${ids.length} Extracted IDs saved to ${deprecationIdsFilePath}`);
