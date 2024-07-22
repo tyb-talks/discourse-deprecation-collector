@@ -1,7 +1,7 @@
 name: Update Core Discourse Deprecations
 on:
-#  schedule:
-#    - cron: '0 0 * * 1' # run every Monday 00:00 UTC
+  schedule:
+    - cron: '0 0 * * 1' # run every Monday 00:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -36,11 +36,12 @@ jobs:
           title: Update Discourse Core Deprecations
           body: |
             This PR updates the list of Discourse deprecations in the `deprecation-ids.yml` file.
-            Any files that need to be manually checked for deprecation IDs that are not found by the
-            script are in `files_to_debug.txt`. Please delete this file if present before merging.
+            
+            The `files_to_debug.txt` file contains paths of files that should be checked for deprecation IDs that
+            were not found by the script. Please remove those entries (**but not the file**) before merging. 
 
           branch: update-discourse-core-deprecations
           delete-branch: true
           add-paths: |
             ./lib/deprecation_collector/deprecation-ids.yml
-            ./files_to_debug.txt
+            ./scripts/files_to_debug.txt
