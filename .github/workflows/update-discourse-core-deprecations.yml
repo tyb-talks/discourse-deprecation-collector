@@ -1,7 +1,7 @@
 name: Update Core Discourse Deprecations
 on:
-  schedule:
-    - cron: '0 0 * * 1' # run every Monday 00:00 UTC
+#  schedule:
+#    - cron: '0 0 * * 1' # run every Monday 00:00 UTC
   workflow_dispatch:
 
 jobs:
