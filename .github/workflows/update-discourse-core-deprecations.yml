@@ -28,12 +28,6 @@ jobs:
         id: run-script
         run: |
           node ./scripts/update_discourse_core_deprecations.mjs ./discourse
-          if [ -f files_to_debug.txt ]; then
-            echo "FILES_TO_DEBUG=$(cat files_to_debug.txt)" >> $GITHUB_ENV
-          else
-           echo "FILES_TO_DEBUG=none" >> $GITHUB_ENV
-          fi
-        
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
@@ -42,11 +36,8 @@ jobs:
           title: Update Discourse Core Deprecations
           body: |
             This PR updates the list of Discourse deprecations in the `deprecation-ids.yml` file.
-            
-            Files to debug:
-            ${{ steps.run-script.outputs.FILES_TO_DEBUG }}
-            
-            Please delete the files_to_debug.txt file if it's present before merging.
+            Any files that need to be manually checked for deprecation IDs that are not found by the
+            script are in `files_to_debug.txt`. Please delete this file if present before merging.
 
           branch: update-discourse-core-deprecations
           delete-branch: true
