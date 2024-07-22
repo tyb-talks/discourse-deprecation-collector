@@ -81,8 +81,7 @@ function resolveIdentifier(name, scope, ast = null) {
       }
     })?.node?.id?.name;
 
-    // return traverseForDeprecationId(ast, name, calleeFunctionName, argIndex);
-    return []
+    return traverseForDeprecationId(ast, name, calleeFunctionName, argIndex);
   }
 
   return [];
