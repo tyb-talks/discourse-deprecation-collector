@@ -209,7 +209,12 @@ async function parseDirectory(directoryPath) {
   const ids = [...new Set(await parseDirectory(directoryPath))].sort();
 
   if (filesToDebug.length > 0) {
-    fs.writeFileSync('files_to_debug.txt', filesToDebug.join("\n"));
+    const filesToDebugFilePath = path.join(
+      ".",
+      "scripts",
+      "files_to_debug.txt"
+    )
+    fs.writeFileSync(filesToDebugFilePath, filesToDebug.join("\n"));
   }
 
   const deprecationIdsFilePath = path.join(
@@ -222,7 +227,10 @@ async function parseDirectory(directoryPath) {
     fs.readFileSync(deprecationIdsFilePath, "utf8")
   );
   deprecationIds["discourse_deprecation_ids"] = ids;
-  const contentToWrite = "---\n" + yaml.dump(deprecationIds, { noArrayIndent: true })
-  fs.writeFileSync(deprecationIdsFilePath, contentToWrite, "utf8");
+  fs.writeFileSync(
+    deprecationIdsFilePath,
+    yaml.dump(deprecationIds, { "---": true, noArrayIndent: true }),
+    "utf8"
+  );
   console.log(`${ids.length} Extracted IDs saved to ${deprecationIdsFilePath}`);
 })();
